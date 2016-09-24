@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>PFCK in Penile Cancer</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="site_libs/highlight/textmate.css"
+      type="text/css" />
+<script src="site_libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.9em;
+  padding-left: 5px;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+  padding-left: 10px;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PFCK in Penile Cancer</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Methodology</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Plots
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Descriptive</li>
+    <li>
+      <a href="descriptive.html">Cohort features</a>
+    </li>
+    <li class="dropdown-header">PDL1</li>
+    <li>
+      <a href="pdl1_tumor.html">In tumor cells</a>
+    </li>
+    <li>
+      <a href="pdl1_stroma.html">In stromal cells</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">FOXP3</li>
+    <li>
+      <a href="foxp3_tumor.html">In tumor lymphocytes</a>
+    </li>
+    <li>
+      <a href="foxp3_stroma.html">in stromal lymphocytes</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">CD8</li>
+    <li>
+      <a href="cd8_tumor.html">In tumor lymphocytes</a>
+    </li>
+    <li>
+      <a href="cd8_stroma.html">In stromal lymphocytes</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">CD8/Ki67</li>
+    <li>
+      <a href="cd8ki67_tumor.html">In tumor lymphocytes</a>
+    </li>
+    <li>
+      <a href="cd8ki67_stroma.html">In stromal lymphocytes</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">CD8-to-FOXP3 balance</li>
+    <li>
+      <a href="cd8_foxp3_tumor.html">In tumor lymphocytes</a>
+    </li>
+    <li>
+      <a href="cd8_foxp3_stroma.html">In stromal lymphocytes</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">All markers</li>
+    <li>
+      <a href="correlation.html">Correlation matrix</a>
+    </li>
+    <li>
+      <a href="marker_by_year.html">Expression by year</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Tables
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Summary tables</li>
+    <li>
+      <a href="table_cohort.html">Cohort features</a>
+    </li>
+    <li>
+      <a href="table_markers.html">Marker features</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Association tables</li>
+    <li>
+      <a href="table_pdl1_tumor.html">PDL1 in tumor cells</a>
+    </li>
+    <li>
+      <a href="table_pdl1_stroma.html">PDL1 in stromal cells</a>
+    </li>
+    <li>
+      <a href="table_foxp3_tumor.html">FOXP3 in tumor lymphocytes</a>
+    </li>
+    <li>
+      <a href="table_foxp3_stroma.html">FOXP3 in stromal lymphocytes</a>
+    </li>
+    <li>
+      <a href="table_cd8_tumor.html">CD8 in tumor lymphocytes</a>
+    </li>
+    <li>
+      <a href="table_cd8_stroma.html">CD8 in stromal lymphocytes</a>
+    </li>
+    <li>
+      <a href="table_cd8ki67_tumor.html">CD8/Ki67 in tumor lymphocytes</a>
+    </li>
+    <li>
+      <a href="table_cd8ki67_stroma.html">CD8/Ki67 in stromal lymphocytes</a>
+    </li>
+    <li>
+      <a href="table_cd8_foxp3_tumor.html">CD8-to-FOXP3 in tumor lymphocytes</a>
+    </li>
+    <li>
+      <a href="table_cd8_foxp3_stroma.html">CD8-to-FOXP3 in stromal lymphocytes</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Regression models</li>
+    <li>
+      <a href="regression_om.html">Overall mortality</a>
+    </li>
+    <li>
+      <a href="regression_crm.html">Cancer-related mortality</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="../index.html">Sandbox Home</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">PFCK in Penile Cancer</h1>
+
+</div>
+
+
+<p><strong>Title:</strong> Expression Status and Prognostic Value of PDL1, FOXP3, CD8 and Ki67 in Penile Squamous Cell Carcinomas</p>
+<p><strong>Authors’ list:</strong> Margaret Cocks (1), Diana Taheri (1), Mark W. Ball (2), Stephania M. Bezerra (1), Alan Meeker (1), Maria del Carmen Rodriguez (1), Alcides Chaux (1,4), Arthur Burnett (2), George Netto (1,2,3)</p>
+<p><strong>Authors’ affiliations:</strong> Departments of (1) Pathology, (2) Urology and (3) Oncology, The Johns Hopkins Medical Institutions, Baltimore, MD; (4) Department of Scientific Research, Norte University, Asuncion, PRY.</p>
+<p><strong>Last updated:</strong> Tue Aug 9 11:08:29 2016</p>
+<pre class="r"><code># Loading the dataset
+load(&quot;../Data/PFCK_penile.Rdata&quot;)</code></pre>
+<hr />
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<p>In this study we evaluate the immunohistochemical expression of PDL1, FOXP3, CD8, and Ki67 in penile squamous cell carcinomas, assessing the association between expression level and clinicopathologic and outcome features.</p>
+<p>The dataset includes data on 53 patients with invasive squamous cell carcinoma. Using representative FFPE tissue samples from the patients’ tumors, 2 high-density tissue microarrays (TMAs) were built at the Johns Hopkins TMA Lab Core (Baltimore, MD; <a href="http://tmalab.jhmi.edu/" class="uri">http://tmalab.jhmi.edu/</a>), according to a previously described protocol. Tumors were spotted 3-5 times each using 1.6-mm cores.</p>
+<hr />
+</div>
+<div id="material-method" class="section level1">
+<h1>Material &amp; method</h1>
+<div id="evaluation-of-expression" class="section level2">
+<h2>Evaluation of expression</h2>
+<p>For each marker, the methodology for evaluation of the immunohistochemical expression was as follows:</p>
+<ul>
+<li><strong>PDL1:</strong> PDL1 was evaluated in tumor and stromal cells, noting the percentage of positive cells.</li>
+<li><strong>FOXP3, CD8, and Ki67:</strong> The expression of these markers was evaluated in lymphocytes infiltrating tumor and stroma, counting the number of positive lymphocytes.</li>
+</ul>
+<p>In all cases, the maximum value of all TMA spots was selected to summarize the expression levels of the marker under evaluation. Thus, for each patient, we had a maximum value per marker across all sampled tissues. We then categorized each case as positive or negative for the corresponding marker using either any percentage of positive cells (PDL1) or counts above the mean value of positive cells (FOXP3, CD8, and Ki67).</p>
+<p>Additionally, we created a 2-level category of the CD8-to-FOXP3 balance comparing the counts of positive cells in tumor and in stroma, as follows:</p>
+<ul>
+<li>CD8 counts greater than FOXP3 counts</li>
+<li>CD8 counts less than or equal to FOXP3 counts</li>
+</ul>
+<p>In the following sections, “Tumor lymphocytes” means “lymphocytes infiltrating tumor”. Similarly, “Stromal lymphocytes” means “lymphocytes infiltrating stroma”.</p>
+<p><br></p>
+</div>
+<div id="statistical-approach" class="section level2">
+<h2>Statistical approach</h2>
+<p>For each marker, we used the following statistical approach:</p>
+<ul>
+<li><strong>Association analysis:</strong> We compared the following clinicopathologic features per postive/negative levels of the marker:
+<ul>
+<li>Age (in years) and race</li>
+<li>Histologic grade</li>
+<li>Tumor thickness</li>
+<li>Presence of lymphovascular invasion, perineural invasion, urethral invasion, or lymph node metastasis</li>
+<li>Tumor invasion of the surgical margin</li>
+<li>pT stage, pN stage, and tumor stage</li>
+<li>HPV status (established by in situ hybridization)</li>
+<li>Development of tumor recurrence, tumor progression, or distant metastasis during follow-up</li>
+<li>Overall mortality (i.e., all-cause death)</li>
+<li>Cancer-reletad mortality (i.e., death caused by tumor dissemination)</li>
+</ul></li>
+<li><strong>Outcome analysis:</strong> We plotted survival curves and estimated odds and hazard ratios considering the expression levels of the marker as the predictor variable and the overall and cancer-related mortality as the outcome variable.</li>
+</ul>
+<p>We also used the previous approach considring the CD8-to-FOXP3 balance in tumor lymphocytes and stromal lymphocytes. Finally, we evaluated the correlation between the expression values of all markers.</p>
+<p><br></p>
+</div>
+<div id="statistical-tests" class="section level2">
+<h2>Statistical tests</h2>
+<p>For the asssociation analysis we used the Student’s t test/Mann-Whitney U test and the Pearson’s chi-squared test/Fisher’s exact test. For the outcome analysis, we plotted survival curves using the Kaplan-Meier method and we compared them using the log-rank test. Also, we estimated odds ratios and hazard ratios using unconditiona binary logistic regression models and Cox’s proportional hazards regression models. The correlation between markers was evaluated using Pearson’s correlation coefficient. Data was analyzed using R version 3.3.1 (2016-06-21).</p>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

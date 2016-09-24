@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>Cohort features</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cerulean.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+
+<style type="text/css">code{white-space: pre;}</style>
+<link rel="stylesheet"
+      href="site_libs/highlight/textmate.css"
+      type="text/css" />
+<script src="site_libs/highlight/highlight.js"></script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="styles.css" type="text/css" />
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 51px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+
+.section h2 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h3 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h4 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h5 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+.section h6 {
+  padding-top: 56px;
+  margin-top: -56px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+</script>
+
+<!-- code folding -->
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
+
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = false;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.9em;
+  padding-left: 5px;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+  padding-left: 10px;
+}
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">PFCK in Penile Cancer</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Methodology</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Plots
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Descriptive</li>
+    <li>
+      <a href="descriptive.html">Cohort features</a>
+    </li>
+    <li class="dropdown-header">PDL1</li>
+    <li>
+      <a href="pdl1_tumor.html">In tumor cells</a>
+    </li>
+    <li>
+      <a href="pdl1_stroma.html">In stromal cells</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">FOXP3</li>
+    <li>
+      <a href="foxp3_tumor.html">In tumor lymphocytes</a>
+    </li>
+    <li>
+      <a href="foxp3_stroma.html">in stromal lymphocytes</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">CD8</li>
+    <li>
+      <a href="cd8_tumor.html">In tumor lymphocytes</a>
+    </li>
+    <li>
+      <a href="cd8_stroma.html">In stromal lymphocytes</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">CD8/Ki67</li>
+    <li>
+      <a href="cd8ki67_tumor.html">In tumor lymphocytes</a>
+    </li>
+    <li>
+      <a href="cd8ki67_stroma.html">In stromal lymphocytes</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">CD8-to-FOXP3 balance</li>
+    <li>
+      <a href="cd8_foxp3_tumor.html">In tumor lymphocytes</a>
+    </li>
+    <li>
+      <a href="cd8_foxp3_stroma.html">In stromal lymphocytes</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">All markers</li>
+    <li>
+      <a href="correlation.html">Correlation matrix</a>
+    </li>
+    <li>
+      <a href="marker_by_year.html">Expression by year</a>
+    </li>
+  </ul>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Tables
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Summary tables</li>
+    <li>
+      <a href="table_cohort.html">Cohort features</a>
+    </li>
+    <li>
+      <a href="table_markers.html">Marker features</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Association tables</li>
+    <li>
+      <a href="table_pdl1_tumor.html">PDL1 in tumor cells</a>
+    </li>
+    <li>
+      <a href="table_pdl1_stroma.html">PDL1 in stromal cells</a>
+    </li>
+    <li>
+      <a href="table_foxp3_tumor.html">FOXP3 in tumor lymphocytes</a>
+    </li>
+    <li>
+      <a href="table_foxp3_stroma.html">FOXP3 in stromal lymphocytes</a>
+    </li>
+    <li>
+      <a href="table_cd8_tumor.html">CD8 in tumor lymphocytes</a>
+    </li>
+    <li>
+      <a href="table_cd8_stroma.html">CD8 in stromal lymphocytes</a>
+    </li>
+    <li>
+      <a href="table_cd8ki67_tumor.html">CD8/Ki67 in tumor lymphocytes</a>
+    </li>
+    <li>
+      <a href="table_cd8ki67_stroma.html">CD8/Ki67 in stromal lymphocytes</a>
+    </li>
+    <li>
+      <a href="table_cd8_foxp3_tumor.html">CD8-to-FOXP3 in tumor lymphocytes</a>
+    </li>
+    <li>
+      <a href="table_cd8_foxp3_stroma.html">CD8-to-FOXP3 in stromal lymphocytes</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Regression models</li>
+    <li>
+      <a href="regression_om.html">Overall mortality</a>
+    </li>
+    <li>
+      <a href="regression_crm.html">Cancer-related mortality</a>
+    </li>
+  </ul>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="../index.html">Sandbox Home</a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+<div class="btn-group pull-right">
+<button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
+
+
+
+<h1 class="title toc-ignore">Cohort features</h1>
+
+</div>
+
+
+<pre class="r"><code># Setting up global options
+library(knitr)
+opts_chunk$set(
+  warning = FALSE,
+  message = FALSE,
+  fig.align = &quot;center&quot;
+)
+
+# Loading the dataset
+load(&quot;../Data/PFCK_penile.Rdata&quot;)
+source(&quot;../R/nice_tables.R&quot;)
+source(&quot;../R/gplots.R&quot;)</code></pre>
+<div id="clinical-features" class="section level2">
+<h2>Clinical features</h2>
+<div id="patients-age-in-years" class="section level4">
+<h4>Patients age, in years</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Statistics</th>
+<th align="center">Values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Mean</td>
+<td align="center">65.8</td>
+</tr>
+<tr class="even">
+<td align="left">Standard Deviation</td>
+<td align="center">12</td>
+</tr>
+<tr class="odd">
+<td align="left">Median</td>
+<td align="center">65</td>
+</tr>
+<tr class="even">
+<td align="left">Interquartile Range</td>
+<td align="center">18</td>
+</tr>
+<tr class="odd">
+<td align="left">Mininum</td>
+<td align="center">38</td>
+</tr>
+<tr class="even">
+<td align="left">Maximum</td>
+<td align="center">93</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="patients-race" class="section level4">
+<h4>Patients’ race</h4>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No. Cases</th>
+<th align="center">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Caucasian</td>
+<td align="center">37</td>
+<td align="center">69.8</td>
+</tr>
+<tr class="even">
+<td>African-American</td>
+<td align="center">12</td>
+<td align="center">22.6</td>
+</tr>
+<tr class="odd">
+<td>Asian</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Other</td>
+<td align="center">4</td>
+<td align="center">7.5</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+</div>
+<div id="pathologic-features" class="section level2">
+<h2>Pathologic features</h2>
+<div id="histologic-grade" class="section level4">
+<h4>Histologic grade</h4>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No. Cases</th>
+<th align="center">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Grade 1</td>
+<td align="center">11</td>
+<td align="center">21</td>
+</tr>
+<tr class="even">
+<td>Grade 2</td>
+<td align="center">24</td>
+<td align="center">45</td>
+</tr>
+<tr class="odd">
+<td>Grade 3</td>
+<td align="center">18</td>
+<td align="center">34</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="tumor-thickness" class="section level4">
+<h4>Tumor thickness</h4>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No. Cases</th>
+<th align="center">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>&lt; 5mm</td>
+<td align="center">21</td>
+<td align="center">40</td>
+</tr>
+<tr class="even">
+<td>5-10 mm</td>
+<td align="center">16</td>
+<td align="center">30</td>
+</tr>
+<tr class="odd">
+<td>&gt;10 mm</td>
+<td align="center">16</td>
+<td align="center">30</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="lymphovascular-invasion" class="section level4">
+<h4>Lymphovascular invasion</h4>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No. Cases</th>
+<th align="center">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No</td>
+<td align="center">36</td>
+<td align="center">68</td>
+</tr>
+<tr class="even">
+<td>Yes</td>
+<td align="center">17</td>
+<td align="center">32</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="perineural-invasion" class="section level4">
+<h4>Perineural invasion</h4>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No. Cases</th>
+<th align="center">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No</td>
+<td align="center">36</td>
+<td align="center">68</td>
+</tr>
+<tr class="even">
+<td>Yes</td>
+<td align="center">17</td>
+<td align="center">32</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="urethral-invasion" class="section level4">
+<h4>Urethral invasion</h4>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No. Cases</th>
+<th align="center">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No</td>
+<td align="center">43</td>
+<td align="center">81</td>
+</tr>
+<tr class="even">
+<td>Yes</td>
+<td align="center">10</td>
+<td align="center">19</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="tumor-invasion-of-surgical-margins" class="section level4">
+<h4>Tumor invasion of surgical margins</h4>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No. Cases</th>
+<th align="center">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No</td>
+<td align="center">45</td>
+<td align="center">85</td>
+</tr>
+<tr class="even">
+<td>Yes</td>
+<td align="center">8</td>
+<td align="center">15</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="inguinal-lymph-node-metastasis" class="section level4">
+<h4>Inguinal lymph node metastasis</h4>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No. Cases</th>
+<th align="center">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Negative</td>
+<td align="center">13</td>
+<td align="center">45</td>
+</tr>
+<tr class="even">
+<td>Positive</td>
+<td align="center">16</td>
+<td align="center">55</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="pt-stage" class="section level4">
+<h4>pT stage</h4>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No. Cases</th>
+<th align="center">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tis</td>
+<td align="center">0</td>
+<td align="center">0.0</td>
+</tr>
+<tr class="even">
+<td>Ta</td>
+<td align="center">1</td>
+<td align="center">1.9</td>
+</tr>
+<tr class="odd">
+<td>T1a</td>
+<td align="center">19</td>
+<td align="center">35.8</td>
+</tr>
+<tr class="even">
+<td>T1b</td>
+<td align="center">1</td>
+<td align="center">1.9</td>
+</tr>
+<tr class="odd">
+<td>T2</td>
+<td align="center">22</td>
+<td align="center">41.5</td>
+</tr>
+<tr class="even">
+<td>T3</td>
+<td align="center">9</td>
+<td align="center">17.0</td>
+</tr>
+<tr class="odd">
+<td>T4</td>
+<td align="center">1</td>
+<td align="center">1.9</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="pn-stage" class="section level4">
+<h4>pN stage</h4>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No. Cases</th>
+<th align="center">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>pN0</td>
+<td align="center">13</td>
+<td align="center">45</td>
+</tr>
+<tr class="even">
+<td>pN1</td>
+<td align="center">5</td>
+<td align="center">17</td>
+</tr>
+<tr class="odd">
+<td>pN2</td>
+<td align="center">4</td>
+<td align="center">14</td>
+</tr>
+<tr class="even">
+<td>pN3</td>
+<td align="center">7</td>
+<td align="center">24</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="clinical-stage" class="section level4">
+<h4>Clinical stage</h4>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No. Cases</th>
+<th align="center">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Stage 0</td>
+<td align="center">1</td>
+<td align="center">1.9</td>
+</tr>
+<tr class="even">
+<td>Stage I</td>
+<td align="center">18</td>
+<td align="center">34.0</td>
+</tr>
+<tr class="odd">
+<td>Stage II</td>
+<td align="center">18</td>
+<td align="center">34.0</td>
+</tr>
+<tr class="even">
+<td>Stage IIIa</td>
+<td align="center">5</td>
+<td align="center">9.4</td>
+</tr>
+<tr class="odd">
+<td>Stage IIIb</td>
+<td align="center">2</td>
+<td align="center">3.8</td>
+</tr>
+<tr class="even">
+<td>Stage IV</td>
+<td align="center">9</td>
+<td align="center">17.0</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="hpv-status" class="section level4">
+<h4>HPV status</h4>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No. Cases</th>
+<th align="center">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No</td>
+<td align="center">45</td>
+<td align="center">85</td>
+</tr>
+<tr class="even">
+<td>Yes</td>
+<td align="center">8</td>
+<td align="center">15</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+</div>
+<div id="outcome-features" class="section level2">
+<h2>Outcome features</h2>
+<div id="follow-up-length-in-months" class="section level4">
+<h4>Follow-up length, in months</h4>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Statistics</th>
+<th align="center">Values</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Mean</td>
+<td align="center">37.5</td>
+</tr>
+<tr class="even">
+<td align="left">Standard Deviation</td>
+<td align="center">44.2</td>
+</tr>
+<tr class="odd">
+<td align="left">Median</td>
+<td align="center">17.9</td>
+</tr>
+<tr class="even">
+<td align="left">Interquartile Range</td>
+<td align="center">49.7</td>
+</tr>
+<tr class="odd">
+<td align="left">Mininum</td>
+<td align="center">0.1</td>
+</tr>
+<tr class="even">
+<td align="left">Maximum</td>
+<td align="center">191.8</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="tumor-recurrence-during-follow-up" class="section level4">
+<h4>Tumor recurrence during follow-up</h4>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No. Cases</th>
+<th align="center">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No</td>
+<td align="center">36</td>
+<td align="center">94.7</td>
+</tr>
+<tr class="even">
+<td>Yes</td>
+<td align="center">2</td>
+<td align="center">5.3</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="tumor-progression-during-follow-up" class="section level4">
+<h4>Tumor progression during follow-up</h4>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No. Cases</th>
+<th align="center">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No</td>
+<td align="center">26</td>
+<td align="center">65</td>
+</tr>
+<tr class="even">
+<td>Yes</td>
+<td align="center">14</td>
+<td align="center">35</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="distant-metastasis-during-follow-up" class="section level4">
+<h4>Distant metastasis during follow-up</h4>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No. Cases</th>
+<th align="center">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No</td>
+<td align="center">25</td>
+<td align="center">57</td>
+</tr>
+<tr class="even">
+<td>Yes</td>
+<td align="center">19</td>
+<td align="center">43</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="overall-mortality" class="section level4">
+<h4>Overall mortality</h4>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No. Cases</th>
+<th align="center">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No</td>
+<td align="center">26</td>
+<td align="center">53</td>
+</tr>
+<tr class="even">
+<td>Yes</td>
+<td align="center">23</td>
+<td align="center">47</td>
+</tr>
+</tbody>
+</table>
+<hr />
+</div>
+<div id="cancer-related-mortality" class="section level4">
+<h4>Cancer-related mortality</h4>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="center">No. Cases</th>
+<th align="center">%</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>No</td>
+<td align="center">41</td>
+<td align="center">84</td>
+</tr>
+<tr class="even">
+<td>Yes</td>
+<td align="center">8</td>
+<td align="center">16</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
